@@ -1,9 +1,10 @@
+package com.genshin_javafx.entities;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "characters")
-public class Character {
+public class Characters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

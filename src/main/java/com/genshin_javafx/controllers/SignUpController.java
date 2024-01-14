@@ -2,7 +2,6 @@ package com.genshin_javafx.controllers;
 
 import com.genshin_javafx.Main;
 import com.genshin_javafx.entities.UserInfo;
-import com.genshin_javafx.entities.UserInfoLogs;
 import com.genshin_javafx.utils.HibernateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,7 +50,6 @@ public class SignUpController {
             newUser.setPassword(hashedPassword);
 
             em.persist(newUser);
-//            saveLog(newUser.getId(), "succes");
             em.getTransaction().commit();
 
             //rejestracja udana, przejście do menu
@@ -60,26 +58,6 @@ public class SignUpController {
             em.getTransaction().rollback();
             e.printStackTrace();
             // Obsługa błędu
-        } finally {
-            em.close();
-        }
-    }
-    private void saveLog(Integer userId, String action){
-        EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
-        try{
-            em.getTransaction().begin();
-            UserInfoLogs log = new UserInfoLogs();
-            log.setIdUser(userId);
-            log.setTimelog(LocalDateTime.now());
-            log.setResult(action);
-            em.persist(log);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-            }
-            e.printStackTrace();
-            // Dodatkowe działania w przypadku błędu
         } finally {
             em.close();
         }

@@ -24,19 +24,19 @@ public class Banner {
 
     @ManyToOne
     @JoinColumn(name = "character5", referencedColumnName = "id")
-    private Character character5;
+    private Characters character5;
 
     @ManyToOne
     @JoinColumn(name = "character4_1", referencedColumnName = "id")
-    private Character character4_1;
+    private Characters character4_1;
 
     @ManyToOne
     @JoinColumn(name = "character4_2", referencedColumnName = "id")
-    private Character character4_2;
+    private Characters character4_2;
 
     @ManyToOne
     @JoinColumn(name = "character4_3", referencedColumnName = "id")
-    private Character character4_3;
+    private Characters character4_3;
 
     @Column(name = "version")
     private String version;
@@ -54,16 +54,16 @@ public class Banner {
     public Date getDateEnd() {
         return dateEnd;
     }
-    public Character getCharacter5() {
+    public Characters getCharacter5() {
         return character5;
     }
-    public Character getCharacter4_1() {
+    public Characters getCharacter4_1() {
         return character4_1;
     }
-    public Character getCharacter4_2() {
+    public Characters getCharacter4_2() {
         return character4_2;
     }
-    public Character getCharacter4_3() {
+    public Characters getCharacter4_3() {
         return character4_3;
     }
     public String getVersion() {
@@ -82,17 +82,17 @@ public class Banner {
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
-    public void setCharacter5(Character character5) {
-        this.character5 = character5;
+    public void setCharacter5(Characters characters5) {
+        this.character5 = characters5;
     }
-    public void setCharacter4_1(Character character4_1) {
-        this.character4_1 = character4_1;
+    public void setCharacter4_1(Characters characters4_1) {
+        this.character4_1 = characters4_1;
     }
-    public void setCharacter4_2(Character character4_2) {
-        this.character4_2 = character4_2;
+    public void setCharacter4_2(Characters characters4_2) {
+        this.character4_2 = characters4_2;
     }
-    public void setCharacter4_3(Character character4_3) {
-        this.character4_3 = character4_3;
+    public void setCharacter4_3(Characters characters4_3) {
+        this.character4_3 = characters4_3;
     }
     public void setVersion(String version) {
         this.version = version;

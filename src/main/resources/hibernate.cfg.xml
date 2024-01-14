@@ -18,9 +18,8 @@
 
         <!-- Mapowanie encji -->
         <mapping class="com.genshin_javafx.entities.Banner"/>
-        <mapping class="com.genshin_javafx.entities.Character"/>
+        <mapping class="com.genshin_javafx.entities.Characters"/>
         <mapping class="com.genshin_javafx.entities.UserInfo"/>
-        <mapping class="com.genshin_javafx.entities.UserInfoLogs"/>
 
     </session-factory>
 </hibernate-configuration>
