@@ -1,0 +1,26 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Konfiguracja połączenia z bazą danych -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/genshin_project</property>
+        <property name="hibernate.connection.username">gubbl3bum</property>
+        <property name="hibernate.connection.password">!gB169!</property>
+
+        <!-- Konfiguracja dialektu -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- Inne właściwości -->
+        <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mapowanie encji -->
+        <mapping class="com.genshin_javafx.entities.Banner"/>
+        <mapping class="com.genshin_javafx.entities.Character"/>
+        <mapping class="com.genshin_javafx.entities.UserInfo"/>
+        <mapping class="com.genshin_javafx.entities.UserInfoLogs"/>
+
+    </session-factory>
+</hibernate-configuration>
