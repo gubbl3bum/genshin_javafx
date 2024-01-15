@@ -78,12 +78,12 @@
                         <Font name="Comic Sans MS Bold" size="18.0" />
                     </font>
                 </Text>
-                <Button id="searching_character" layoutX="405.0" layoutY="527.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: RGB(56,63,126); -fx-background-radius: 15;" text="Search" textFill="#d0d8f3">
+                <Button fx:id="searching_character" layoutX="405.0" layoutY="527.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: RGB(56,63,126); -fx-background-radius: 15;" text="Search" textFill="#d0d8f3">
                     <font>
                         <Font name="Comic Sans MS" size="20.0" />
                     </font>
                 </Button>
-                <Button id="menu" layoutX="658.0" layoutY="527.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: RGB(56,63,126); -fx-background-radius: 15;" text="Menu" textFill="#d0d8f3">
+                <Button fx:id="menu" layoutX="658.0" layoutY="527.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: RGB(56,63,126); -fx-background-radius: 15;" text="Menu" textFill="#d0d8f3">
                     <font>
                         <Font name="Comic Sans MS" size="20.0" />
                     </font>
