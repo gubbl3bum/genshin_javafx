@@ -49,25 +49,8 @@ public class SearchingBannerController {
 
     private void handleSearchButton_atr(){
         SearchCriteriaBanner.setName(name.getText());
+
         SearchCriteriaBanner.setVersion(version.getText());
-//        String versionText = version.getText();
-//        if (versionText != null && !versionText.trim().isEmpty()) {
-//            try {
-//                Integer versionNumber = Integer.valueOf(versionText); // Konwersja String na Integer
-//                SearchCriteriaBanner.setVersion(versionNumber);
-//            } catch (NumberFormatException e) {
-//                // Obsługa błędu, jeśli konwersja się nie powiedzie
-//                SearchCriteriaBanner.setVersion(null);
-//            }
-//        } else {
-//            SearchCriteriaBanner.setVersion(null); // Ustaw null, jeśli pole tekstowe jest puste
-//        }
-//        String versionText = version.getText();
-//        if (versionText != null && !versionText.trim().isEmpty()) {
-//            SearchCriteriaBanner.setVersion(Integer.valueOf(versionText));
-//        } else {
-//            SearchCriteriaBanner.setVersion(null); // Ustaw null, jeśli pole tekstowe jest puste
-//        }
         SearchCriteriaBanner.setCharacter5(character5.getText());
         SearchCriteriaBanner.setCharacter4_1(character4_1.getText());
         SearchCriteriaBanner.setCharacter4_2(character4_2.getText());

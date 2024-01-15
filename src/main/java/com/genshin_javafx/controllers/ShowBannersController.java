@@ -91,7 +91,7 @@ public class ShowBannersController {
         if (name != null && !name.isEmpty()) {
             queryString.append(" and b.name like :name");
         }
-        if (version != null) {
+        if (version != null && !version.isEmpty()) {
             queryString.append(" and b.version like :version");
         }
         if(character5 != null && !character5.isEmpty()){
@@ -106,19 +106,45 @@ public class ShowBannersController {
         if(character4_3 != null && !character4_3.isEmpty()){
             queryString.append(" and b.character4_3.name like :character4_3");
         }
+        //obsługa, gdy wpisano tylko character4_3, a postać może być przypisana do character4_1 i character4_2
+//        if((character4_3 != null && !character4_3.isEmpty()) && (character4_1 == null && character4_2 == null)){
+//            queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3)");
+//        }
+
+        if (character4_3 != null && !character4_3.isEmpty() && character4_1 == null && character4_2 == null) {
+            queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3 or b.character4_3.name like :character4_3)");
+        } else if (character4_1 != null && !character4_1.isEmpty() && character4_2 == null && character4_3 == null) {
+            queryString.append(" and b.character4_1.name like :character4_1");
+        } else if (character4_2 != null && !character4_2.isEmpty() && character4_1 == null && character4_3 == null) {
+            queryString.append(" and b.character4_2.name like :character4_2");
+        } else {
+            // W przypadku, gdy użytkownik wprowadził różne postacie w różnych polach
+            if (character4_1 != null && !character4_1.isEmpty()) {
+                queryString.append(" and b.character4_1.name like :character4_1");
+            }
+            if (character4_2 != null && !character4_2.isEmpty()) {
+                queryString.append(" and b.character4_2.name like :character4_2");
+            }
+            if (character4_3 != null && !character4_3.isEmpty()) {
+                queryString.append(" and b.character4_3.name like :character4_3");
+            }
+        }
+
+
         if (startDate != null) {
             queryString.append(" and b.dateStart >= :startDate");
         }
         if (endDate != null) {
             queryString.append(" and b.dateEnd <= :endDate");
         }
+
         Query query = em.createQuery(queryString.toString(), Banner.class);
 
-        //
+        // ustawianie parametru wyszukiwań
         if (name != null && !name.isEmpty()) {
             query.setParameter("name", "%" + name + "%");
         }
-        if (version != null) {
+        if (version != null && !version.isEmpty()) {
             query.setParameter("version", version);
         }
         if(character5 != null && !character5.isEmpty()){
@@ -139,6 +165,13 @@ public class ShowBannersController {
         if (endDate != null) {
             query.setParameter("endDate", endDate);
         }
+
+
+
+//        if((character4_3 != null && !character4_3.isEmpty()) && (character4_1 == null && character4_2 == null)){
+//            query.setParameter("character4_3", character4_3);
+//            //queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3)");
+//        }
 
 
         System.out.println(name);
