@@ -53,7 +53,7 @@ public class ShowBannersController {
     @FXML
     private Button Menu;
     @FXML
-    private void initialize(){
+    private void initialize() {
         Menu.setOnAction(e -> Main.switchScene("Menu.fxml"));
 
         idBanner.setCellValueFactory(new PropertyValueFactory<>("idBanner"));
@@ -69,22 +69,15 @@ public class ShowBannersController {
 
         loadBannerData();
     }
-//    private void loadBannerData() {
-//        EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
-//        List<Banner> banners = em.createQuery("from Banner", Banner.class).getResultList();
-//        ObservableList<Banner> bannerData = FXCollections.observableArrayList(banners);
-//        tableView.setItems(bannerData);
-//    }
     private void loadBannerData(){
         EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
         String name = SearchCriteriaBanner.getName();
         String version = SearchCriteriaBanner.getVersion();
         String character5 = SearchCriteriaBanner.getCharacter5();
         String character4_1 = SearchCriteriaBanner.getCharacter4_1();
-        String character4_2 = SearchCriteriaBanner.getCharacter4_2();
-        String character4_3 = SearchCriteriaBanner.getCharacter4_3();
         LocalDate startDate = SearchCriteriaBanner.getDateStart();
         LocalDate endDate = SearchCriteriaBanner.getDateEnd();
+        LocalDate dateBetween = SearchCriteriaBanner.getDateBetween();
 
         StringBuilder queryString = new StringBuilder("from Banner b where 1=1");
 
@@ -98,44 +91,17 @@ public class ShowBannersController {
             queryString.append(" and b.character5.name like :character5");
         }
         if(character4_1 != null && !character4_1.isEmpty()){
-            queryString.append(" and b.character4_1.name like :character4_1");
+            queryString.append(" and (b.character4_1.name like :character4_1 or b.character4_2.name like :character4_1 or b.character4_3.name like :character4_1)");
         }
-        if(character4_2 != null && !character4_2.isEmpty()){
-            queryString.append(" and b.character4_2.name like :character4_2");
-        }
-        if(character4_3 != null && !character4_3.isEmpty()){
-            queryString.append(" and b.character4_3.name like :character4_3");
-        }
-        //obsługa, gdy wpisano tylko character4_3, a postać może być przypisana do character4_1 i character4_2
-//        if((character4_3 != null && !character4_3.isEmpty()) && (character4_1 == null && character4_2 == null)){
-//            queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3)");
-//        }
-
-        if (character4_3 != null && !character4_3.isEmpty() && character4_1 == null && character4_2 == null) {
-            queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3 or b.character4_3.name like :character4_3)");
-        } else if (character4_1 != null && !character4_1.isEmpty() && character4_2 == null && character4_3 == null) {
-            queryString.append(" and b.character4_1.name like :character4_1");
-        } else if (character4_2 != null && !character4_2.isEmpty() && character4_1 == null && character4_3 == null) {
-            queryString.append(" and b.character4_2.name like :character4_2");
-        } else {
-            // W przypadku, gdy użytkownik wprowadził różne postacie w różnych polach
-            if (character4_1 != null && !character4_1.isEmpty()) {
-                queryString.append(" and b.character4_1.name like :character4_1");
-            }
-            if (character4_2 != null && !character4_2.isEmpty()) {
-                queryString.append(" and b.character4_2.name like :character4_2");
-            }
-            if (character4_3 != null && !character4_3.isEmpty()) {
-                queryString.append(" and b.character4_3.name like :character4_3");
-            }
-        }
-
 
         if (startDate != null) {
             queryString.append(" and b.dateStart >= :startDate");
         }
         if (endDate != null) {
             queryString.append(" and b.dateEnd <= :endDate");
+        }
+        if (dateBetween != null){
+            queryString.append(" and (b.dateStart <= :dateBetween and b.dateEnd >= :dateBetween)");
         }
 
         Query query = em.createQuery(queryString.toString(), Banner.class);
@@ -153,28 +119,19 @@ public class ShowBannersController {
         if(character4_1 != null && !character4_1.isEmpty()){
             query.setParameter("character4_1", character4_1);
         }
-        if(character4_2 != null && !character4_2.isEmpty()){
-            query.setParameter("character4_2", character4_2);
-        }
-        if(character4_3 != null && !character4_3.isEmpty()){
-            query.setParameter("character4_3", character4_3);
-        }
         if (startDate != null) {
-            query.setParameter("startDate", startDate);
+            Date dateStart = SearchCriteriaBanner.asDate(startDate);
+            query.setParameter("startDate", dateStart);
         }
         if (endDate != null) {
-            query.setParameter("endDate", endDate);
+            Date dateEnd = SearchCriteriaBanner.asDate(endDate);
+            query.setParameter("endDate", dateEnd);
+        }
+        if (dateBetween != null) {
+            Date betweenDate = SearchCriteriaBanner.asDate(dateBetween);
+            query.setParameter("dateBetween", betweenDate);
         }
 
-
-
-//        if((character4_3 != null && !character4_3.isEmpty()) && (character4_1 == null && character4_2 == null)){
-//            query.setParameter("character4_3", character4_3);
-//            //queryString.append(" and (b.character4_1.name like :character4_3 or b.character4_2.name like :character4_3)");
-//        }
-
-
-        System.out.println(name);
         List<Banner> banners = query.getResultList();
 
         ObservableList<Banner> bannerData = FXCollections.observableArrayList(banners);

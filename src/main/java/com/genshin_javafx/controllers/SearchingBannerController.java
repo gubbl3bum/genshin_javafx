@@ -1,13 +1,10 @@
 package com.genshin_javafx.controllers;
-
 import com.genshin_javafx.Main;
 import com.genshin_javafx.utils.SearchCriteriaBanner;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-
-import java.util.Date;
 
 public class SearchingBannerController {
 
@@ -30,10 +27,7 @@ public class SearchingBannerController {
     private TextField character4_1;
 
     @FXML
-    private TextField character4_2;
-
-    @FXML
-    private TextField character4_3;
+    private DatePicker dateBetween;
 
     @FXML
     private DatePicker dateStart;
@@ -46,15 +40,12 @@ public class SearchingBannerController {
         Searching_banner_button.setOnAction(e -> handleSearchButton_atr());
         Menu_button.setOnAction(e -> Main.switchScene("Menu.fxml"));
     }
-
     private void handleSearchButton_atr(){
         SearchCriteriaBanner.setName(name.getText());
-
         SearchCriteriaBanner.setVersion(version.getText());
         SearchCriteriaBanner.setCharacter5(character5.getText());
         SearchCriteriaBanner.setCharacter4_1(character4_1.getText());
-        SearchCriteriaBanner.setCharacter4_2(character4_2.getText());
-        SearchCriteriaBanner.setCharacter4_3(character4_3.getText());
+        SearchCriteriaBanner.setDateBetween(dateBetween.getValue());
         SearchCriteriaBanner.setDateStart(dateStart.getValue());
         SearchCriteriaBanner.setDateEnd(dateEnd.getValue());
 
