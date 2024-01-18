@@ -94,7 +94,16 @@ public class ShowCharactersController {
         String gender = SearchCriteriaCharacter.getGender();
         String age = SearchCriteriaCharacter.getAge();
         String weapon = SearchCriteriaCharacter.getWeapon();
-        String quality = SearchCriteriaCharacter.getQuality();
+        String qualityString = SearchCriteriaCharacter.getQuality();
+
+        Integer quality = null;
+        if(qualityString != null && !qualityString.isEmpty()){
+            try{
+                quality = Integer.parseInt(qualityString);
+            } catch (NumberFormatException e){
+                //błąd formatowania
+            }
+        }
 
         StringBuilder queryString = new StringBuilder("from Characters c where 1=1");
 
@@ -116,7 +125,7 @@ public class ShowCharactersController {
         if(weapon != null && !weapon.isEmpty()){
             queryString.append(" and c.weapon like :weapon");
         }
-        if(quality != null && !quality.isEmpty()){
+        if(quality != null){
             queryString.append(" and c.quality like :quality");
         }
 
@@ -142,7 +151,7 @@ public class ShowCharactersController {
         if(weapon != null && !weapon.isEmpty()){
             query.setParameter("weapon", weapon);
         }
-        if(quality != null && !quality.isEmpty()){
+        if(quality != null){
             query.setParameter("quality", quality);
         }
 
