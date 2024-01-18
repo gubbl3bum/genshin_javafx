@@ -29,15 +29,15 @@
                   <TableColumn fx:id="element" prefWidth="61.0" text="Element" />
                   <TableColumn fx:id="region" prefWidth="79.0" text="Region" />
                   <TableColumn fx:id="gender" prefWidth="69.0" text="Gender" />
-                  <TableColumn fx:id="age" prefWidth="78.0" text="Age" />
+                  <TableColumn fx:id="age" prefWidth="63.0" text="Age" />
                   <TableColumn fx:id="weapon" prefWidth="74.0" text="Weapon" />
-                  <TableColumn fx:id="health" prefWidth="55.0" text="Health" />
-                  <TableColumn fx:id="attack" prefWidth="45.0" text="Attack" />
-                  <TableColumn fx:id="defense" prefWidth="57.0" text="Defense" />
-                  <TableColumn fx:id="critRate" prefWidth="56.0" text="CritRate" />
-                  <TableColumn fx:id="critDamage" prefWidth="55.0" text="CritDmg" />
-                  <TableColumn fx:id="quality" prefWidth="54.0" text="Quality" />
-                  <TableColumn fx:id="elemenDmgBonus" prefWidth="60.0" text="ElemDmg" />
+                  <TableColumn fx:id="health" prefWidth="54.0" text="Health" />
+                  <TableColumn fx:id="attack" prefWidth="42.0" text="Attack" />
+                  <TableColumn fx:id="defense" prefWidth="51.0" text="Defense" />
+                  <TableColumn fx:id="critRate" prefWidth="54.0" text="CritRate" />
+                  <TableColumn fx:id="critDamage" prefWidth="59.0" text="CritDmg" />
+                  <TableColumn fx:id="quality" prefWidth="55.0" text="Quality" />
+                  <TableColumn fx:id="elemenDmgBonus" prefWidth="82.0" text="ElemDmg" />
               </columns>
             </TableView>
             </children>

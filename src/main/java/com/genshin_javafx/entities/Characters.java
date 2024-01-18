@@ -1,5 +1,4 @@
 package com.genshin_javafx.entities;
-
 import javax.persistence.*;
 
 @Entity
