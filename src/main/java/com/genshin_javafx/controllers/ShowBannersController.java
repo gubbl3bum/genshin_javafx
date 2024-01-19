@@ -101,7 +101,7 @@ public class ShowBannersController {
             queryString.append(" and b.dateEnd <= :endDate");
         }
         if (dateBetween != null){
-            queryString.append(" and (b.dateStart <= :dateBetween and b.dateEnd >= :dateBetween)");
+            queryString.append(" and b.dateStart <= :dateBetween and b.dateEnd >= :dateBetween");
         }
 
         Query query = em.createQuery(queryString.toString(), Banner.class);
