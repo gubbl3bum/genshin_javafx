@@ -75,7 +75,12 @@
       <version>11.2.0</version>
     </dependency>
 
-
+    <!-- JFoenix -->
+    <dependency>
+      <groupId>com.jfoenix</groupId>
+      <artifactId>jfoenix</artifactId>
+      <version>9.0.10</version>
+    </dependency>
 
   </dependencies>
 
@@ -84,10 +89,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.12.1</version> <!-- Użyj odpowiedniej wersji -->
         <configuration>
-          <source>21</source>
-          <target>21</target>
+          <release>21</release> <!-- Ustaw na wersję Java, której używasz -->
+          <compilerArgs>
+            <arg>--add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <!-- autouzupełnianie -->
