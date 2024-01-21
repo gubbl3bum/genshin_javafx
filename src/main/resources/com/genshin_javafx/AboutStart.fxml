@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import java.net.URL?>
-<VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.genshin_javafx.controllers.AboutStartController">
+<VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.genshin_javafx.controllers.AboutStartController">
     <AnchorPane prefHeight="711.0" prefWidth="900.0" style="-fx-background-color: RGB(32,36,66);">
-        <Text fill="#d0d8f3" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About"
-              wrappingWidth="128.689453125" styleClass="text-title-custom">
+        <Text fill="#d0d8f3" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title-custom" text="About" wrappingWidth="128.689453125">
         </Text>
-        <Button fx:id="Start_button" layoutX="666.0" layoutY="526.0" mnemonicParsing="false" prefHeight="52.0"
-                prefWidth="182.0" text="Start" styleClass="button-custom">
+        <Button fx:id="Start_button" layoutX="666.0" layoutY="526.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="Start">
         </Button>
-        <AnchorPane layoutX="78.0" layoutY="134.0" prefHeight="351.0" prefWidth="745.0"
-                   styleClass="anchor-custom">
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+        <AnchorPane layoutX="78.0" layoutY="134.0" prefHeight="351.0" prefWidth="745.0" styleClass="anchor-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="This program is used to maintain a database of characters and banners from the Genshin Impact game." wrappingWidth="669.240234375">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="To log in as a guest, click &quot;Sign in as guest&quot; - however, it will not be possible to add characters/banners to the database." wrappingWidth="669.240234375">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="To log in as a user, click &quot;Sign in&quot; and complete the form.To register as a user, click &quot;Sign up&quot; and complete the form.User can browse and add characters/banners." wrappingWidth="669.240234375">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="43.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="The application admin can delete: users and records from the database.">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
-            </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="UwU OwO thanks for clicking that!!!" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="Enjoy! UwU">
             </Text>
         </AnchorPane>
         <stylesheets>
-            <URL value="@style.css"/>
+            <URL value="@style.css" />
         </stylesheets>
     </AnchorPane>
 </VBox>

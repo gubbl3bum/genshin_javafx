@@ -1,45 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<?import java.net.URL?>
-<VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.genshin_javafx.controllers.AboutMenuController">
+<VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.genshin_javafx.controllers.AboutMenuController">
     <AnchorPane prefHeight="711.0" prefWidth="900.0" style="-fx-background-color: RGB(32,36,66);">
-        <Text fill="#d0d8f3" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About"
-              wrappingWidth="128.689453125" styleClass="text-title-custom">
+        <Text fill="#d0d8f3" layoutX="386.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title-custom" text="About" wrappingWidth="128.689453125">
         </Text>
-        <Button fx:id="Menu_button" layoutX="666.0" layoutY="526.0" mnemonicParsing="false" prefHeight="52.0"
-                prefWidth="182.0" text="Menu" styleClass="button-custom">
+        <Button fx:id="Menu_button" layoutX="666.0" layoutY="526.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="Menu">
         </Button>
-        <AnchorPane layoutX="78.0" layoutY="134.0" prefHeight="351.0" prefWidth="745.0"
-                    style="-fx-background-color: RGB(56,63,126); -fx-background-radius: 15;">
-            <Text fill="#d0d8f3" layoutX="43.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla    MENU THING" styleClass="text-about-custom">
+        <AnchorPane layoutX="78.0" layoutY="134.0" prefHeight="351.0" prefWidth="745.0" styleClass="anchor-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="To search for a character, click &quot;Search Characters&quot;. To add a character to the database, click &quot;Add Character&quot;." wrappingWidth="667.4140625">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="Similarly, to search for a banner, click &quot;Search Banners&quot;. To add a banner to the database, click &quot;Add Banner&quot;." wrappingWidth="667.4140625">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="43.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="To log out and return to the menu, click &quot;Sign Out&quot;.">
             </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
-            </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Bla bla bla bla bla bla bla bla bla! bla bla? bla bla bla" styleClass="text-about-custom">
-            </Text>
-            <Text fill="#d0d8f3" layoutX="42.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="UwU OwO thanks for clicking that!!!" styleClass="text-about-custom">
+            <Text fill="#d0d8f3" layoutX="42.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-about-custom" text="Enjoy! UwU">
             </Text>
 
         </AnchorPane>
         <stylesheets>
-            <URL value="@style.css"/>
+            <URL value="@style.css" />
         </stylesheets>
     </AnchorPane>
 </VBox>

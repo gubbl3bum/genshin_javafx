@@ -17,9 +17,9 @@
         </Button>
         <Button fx:id="Sign_out_button" layoutX="155.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="Sign Out">
         </Button>
-        <Button fx:id="Add_char_button" layoutX="141.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Characters">
+        <Button fx:id="Add_char_button" layoutX="141.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Character">
         </Button>
-        <Button fx:id="Add_banner_button" layoutX="550.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Banners">
+        <Button fx:id="Add_banner_button" layoutX="550.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Banner">
         </Button>
         <Button fx:id="About_button" layoutX="564.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="About">
         </Button>
