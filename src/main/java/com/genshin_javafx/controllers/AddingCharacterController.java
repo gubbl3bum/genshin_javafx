@@ -74,7 +74,14 @@ public class AddingCharacterController {
 
         Characters character = new Characters();
 
-        character.setName(name.getText());
+        String nameString = name.getText();
+        boolean nameDataBase = doesValueExistForCriteria(em, "name", nameString);
+        if(nameDataBase){
+            showAlert("Character already in database!");
+            return;
+        } else{
+            character.setName(nameString);
+        }
 
         String elementString = element.getValue();
         boolean elementDataBase = doesValueExistForCriteria(em,"element",elementString);
@@ -82,6 +89,7 @@ public class AddingCharacterController {
             character.setElement(elementString);
         } else {
             showAlert("Element not found! Use this: Anemo, Geo, Electro, Dendro, Hydro, Pyro, Cryo!");
+            return;
         }
 
         String regionString = region.getValue();
@@ -90,6 +98,7 @@ public class AddingCharacterController {
             character.setRegion(regionString);
         } else {
             showAlert("Region not found! Use this: Mondstadt, Liyue, Inazuma, Sumery, Fontaine, Natlan, Snezhnaya");
+            return;
         }
 
         String genderString = gender.getValue();
@@ -98,6 +107,7 @@ public class AddingCharacterController {
             character.setGender(genderString);
         } else {
             showAlert("Gender not found! Use this: Female, Male");
+            return;
         }
 
         String ageString = age.getValue();
@@ -106,6 +116,7 @@ public class AddingCharacterController {
             character.setAge(ageString);
         } else {
             showAlert("Age not found! Use this: Child, Teenager, Adult");
+            return;
         }
 
         String weaponString = weapon.getValue();
@@ -114,18 +125,20 @@ public class AddingCharacterController {
             character.setWeapon(weaponString);
         } else {
             showAlert("Weapon not found! Use this: Sword, Bow, Claymore, Catalyst, Polearm");
+            return;
         }
 
         String qualityString = quality.getValue();
         try{
             int qualityInt = Integer.parseInt(qualityString);
-            if(qualityInt != 5 || qualityInt != 4){
+            if(qualityInt == 5 || qualityInt == 4){
                 character.setQuality(qualityInt);
             } else {
                 showAlert("Quality not found! Use this: 4, 5");
             }
         }catch(NumberFormatException e){
             showAlert("Error parsing quality to Integer!");
+            return;
         }
 
         String healthString = health.getText();
@@ -134,6 +147,7 @@ public class AddingCharacterController {
             character.setHealth(healthInt);
         }catch(NumberFormatException  e){
             showAlert("Error parsing health to Integer!");
+            return;
         }
 
         String attackString = attack.getText();
@@ -142,6 +156,7 @@ public class AddingCharacterController {
             character.setAttack(attackInt);
         }catch(NumberFormatException  e){
             showAlert("Error parsing attack to Integer!");
+            return;
         }
 
         String defenseString = defense.getText();
@@ -150,6 +165,7 @@ public class AddingCharacterController {
             character.setDefense(defenseInt);
         }catch(NumberFormatException  e){
             showAlert("Error parsing defense to Integer!");
+            return;
         }
 
         String critRateString = critRate.getText();
@@ -158,6 +174,7 @@ public class AddingCharacterController {
             character.setCritRate(critRateDouble);
         }catch(NumberFormatException  e){
             showAlert("Error parsing crtitical damage rate to Double!");
+            return;
         }
 
         String critDamageString = critDamage.getText();
@@ -166,6 +183,7 @@ public class AddingCharacterController {
             character.setCritDamage(critDamageDouble);
         }catch(NumberFormatException  e){
             showAlert("Error parsing critical damage to Double!");
+            return;
         }
 
         String elDmgBonString = elemDmgBonus.getText();
@@ -174,6 +192,7 @@ public class AddingCharacterController {
             character.setElemenDmgBonus(elemenDmgBonDouble);
         }catch(NumberFormatException  e){
             showAlert("Error parsing elemental damage bonus to Double!");
+            return;
         }
 
         try{
@@ -192,44 +211,6 @@ public class AddingCharacterController {
 
     }
 
-//    private Object findCriteria(EntityManager em, String criteria, String thing) {
-//        try {
-//            return em.createQuery("SELECT c FROM Characters c WHERE c.criteria = :thing")
-//                    .setParameter("criteria", criteria).setParameter("thing", thing)
-//                    .getSingleResult();
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-//    private Object findCriteria(EntityManager em, String criteria, String value) {
-//        try {
-//            String queryString = String.format("SELECT c FROM Characters c WHERE c.%s = :value", criteria);
-//            return em.createQuery(queryString, Characters.class)
-//                    .setParameter("value", value)
-//                    .getSingleResult();
-//        } catch (Exception e) {
-//            // Log or handle exception as needed
-//            return null;
-//        }
-//    }
-
-    private Characters findCharacterByAttribute(EntityManager em, String attributeName, String value) {
-        try {
-            // Użyj bezpośrednio nazwy atrybutu z klasy, bez formatowania zapytania
-            String queryString = "SELECT DISTINCT c FROM Characters c WHERE c." + attributeName + " = :value";
-            return em.createQuery(queryString, Characters.class)
-                    .setParameter("value", value)
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            // Nie znaleziono wyników, zwróć null lub obsłuż odpowiednio
-            return null;
-        } catch (Exception e) {
-            // Loguj inne wyjątki, które mogą wskazywać na problemy z zapytaniem lub bazą danych
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     private boolean doesValueExistForCriteria(EntityManager em, String criteria, String value) {
         String queryString = "SELECT COUNT(c) FROM Characters c WHERE c." + criteria + " = :value";
         Long count = em.createQuery(queryString, Long.class)
@@ -238,8 +219,6 @@ public class AddingCharacterController {
         return count > 0;
     }
 
-
-
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR, message);
         alert.showAndWait();
@@ -247,7 +226,7 @@ public class AddingCharacterController {
     private void jfxComboBoxInitialize(){
         EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
         try{
-            Query queryElement = em.createQuery("SELECT c.element FROM Characters c");
+            Query queryElement = em.createQuery("SELECT DISTINCT c.element FROM Characters c");
             List<String> elementList = queryElement.getResultList();
             element.setItems(FXCollections.observableArrayList(elementList));
             element.setEditable(true);
@@ -265,7 +244,7 @@ public class AddingCharacterController {
                 element.getEditor().setText(newValue);
             });
 
-            Query queryRegion = em.createQuery("SELECT c.region FROM Characters c");
+            Query queryRegion = em.createQuery("SELECT DISTINCT c.region FROM Characters c");
             List<String> regionList = queryRegion.getResultList();
             region.setItems(FXCollections.observableArrayList(regionList));
             region.setEditable(true);
@@ -299,9 +278,6 @@ public class AddingCharacterController {
                 }
                 gender.getEditor().setText(newValue);
             });
-            gender.setOnAction(event -> {
-                String selectedGender = gender.getSelectionModel().getSelectedItem();
-            });
 
             Query queryAge = em.createQuery("SELECT DISTINCT c.age FROM Characters c");
             List<String> characterAge = queryAge.getResultList();
@@ -318,9 +294,6 @@ public class AddingCharacterController {
                     age.show();
                 }
                 age.getEditor().setText(newValue);
-            });
-            age.setOnAction(event -> {
-                String selectedAge = age.getSelectionModel().getSelectedItem();
             });
 
             Query queryWeapon = em.createQuery("SELECT DISTINCT c.weapon FROM Characters c");
@@ -339,9 +312,6 @@ public class AddingCharacterController {
                 }
                 weapon.getEditor().setText(newValue);
             });
-            weapon.setOnAction(event -> {
-                String selectedWeapon = weapon.getSelectionModel().getSelectedItem();
-            });
 
             Query queryQuality = em.createQuery("SELECT DISTINCT c.quality FROM Characters c");
             List<String> characterQuality = queryQuality.getResultList();
@@ -359,11 +329,8 @@ public class AddingCharacterController {
                 }
                 quality.getEditor().setText(newValue);
             });
-            quality.setOnAction(event -> {
-                String selectedWeapon = quality.getSelectionModel().getSelectedItem();
-            });
         }catch(Exception e){
-
+            showAlert("Error while parsing quality to Integer!");
         }finally{
             em.close();
         }
