@@ -1,4 +1,5 @@
 package com.genshin_javafx.controllers;
+
 import com.genshin_javafx.Main;
 import com.genshin_javafx.utils.HibernateUtil;
 import com.genshin_javafx.utils.SearchCriteriaBanner;
@@ -8,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.util.Callback;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.time.LocalDate;
@@ -174,7 +173,6 @@ public class SearchingBannerController {
         }
     }
     public void setupDatePicker(){
-        // Ustawienie minimalnej daty dla dateStart i dateBetween
         Callback<DatePicker, DateCell> dayCellFactory = dp -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
@@ -187,7 +185,6 @@ public class SearchingBannerController {
         dateStart.setDayCellFactory(dayCellFactory);
         dateBetween.setDayCellFactory(dayCellFactory);
 
-        // Aktualizacja ograniczeń dla dateEnd na podstawie wybranej wartości w dateStart
         dateStart.valueProperty().addListener((obs, oldDate, newDate) -> {
             if (newDate != null) {
                 dateEnd.setDayCellFactory(d -> new DateCell() {

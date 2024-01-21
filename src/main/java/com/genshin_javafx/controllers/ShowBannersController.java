@@ -60,7 +60,7 @@ public class ShowBannersController {
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         dateStart.setCellValueFactory(new PropertyValueFactory<>("dateStart"));
         dateEnd.setCellValueFactory(new PropertyValueFactory<>("dateEnd"));
-        //wyświetlanie nazw z tablicy characters
+
         character5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCharacter5().getName()));
         character4_1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCharacter4_1().getName()));
         character4_2.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCharacter4_2().getName()));
@@ -93,7 +93,6 @@ public class ShowBannersController {
         if(character4_1 != null && !character4_1.isEmpty()){
             queryString.append(" and (b.character4_1.name like :character4_1 or b.character4_2.name like :character4_1 or b.character4_3.name like :character4_1)");
         }
-
         if (startDate != null) {
             queryString.append(" and b.dateStart >= :startDate");
         }

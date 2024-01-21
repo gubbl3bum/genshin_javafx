@@ -123,7 +123,7 @@ public class AddingBannerController {
                 version.getEditor().setText(newValue);
             });
 
-            Query queryChar5 = em.createQuery("SELECT DISTINCT char5.name FROM Banner b JOIN b.character5 char5");
+            Query queryChar5 = em.createQuery("SELECT c.name FROM Characters c WHERE c.quality = 5");
             List<String> character5List = queryChar5.getResultList();
             character5.setItems(FXCollections.observableArrayList(character5List));
             character5.setEditable(true);
@@ -140,20 +140,8 @@ public class AddingBannerController {
                 character5.getEditor().setText(newValue);
             });
 
-            Query queryChar4_1 = em.createQuery("SELECT DISTINCT char4_1.name FROM Banner b JOIN b.character4_1 char4_1");
-            Query queryChar4_2 = em.createQuery("SELECT DISTINCT char4_2.name FROM Banner b JOIN b.character4_2 char4_2");
-            Query queryChar4_3 = em.createQuery("SELECT DISTINCT char4_3.name FROM Banner b JOIN b.character4_3 char4_3");
-
-            List<String> character4_1List = queryChar4_1.getResultList();
-            List<String> character4_2List = queryChar4_2.getResultList();
-            List<String> character4_3List = queryChar4_3.getResultList();
-
-            Set<String> combinedSet = new HashSet<>();
-            combinedSet.addAll(character4_1List);
-            combinedSet.addAll(character4_2List);
-            combinedSet.addAll(character4_3List);
-
-            combinedList = new ArrayList<>(combinedSet);
+            Query queryChar4 = em.createQuery("SELECT c.name FROM Characters c WHERE c.quality = 4");
+            List<String> combinedList = queryChar4.getResultList();
 
             character4_1.setItems(FXCollections.observableArrayList(combinedList));
             character4_1.setEditable(true);
@@ -216,10 +204,7 @@ public class AddingBannerController {
         String char4_3 = character4_3.getSelectionModel().getSelectedItem();
 
         if (char4_1 != null && char4_1.equals(char4_2) && char4_1.equals(char4_3)) {
-            // Wyświetl komunikat o błędzie
-            showAlert("Nie można wybrać trzech takich samych postaci 4*.");
-            // Możesz również zresetować wybory w ComboBoxach
-            // Zresetuj wybory w ComboBoxach
+            showAlert("Three same character 4* not allowed!");
             character4_1.getSelectionModel().clearSelection();
             character4_2.getSelectionModel().clearSelection();
             character4_3.getSelectionModel().clearSelection();
@@ -243,28 +228,28 @@ public class AddingBannerController {
             showAlert("Wrong version! Use 'X.Y' format where X and Y are numbers.");
         }
 
-        String character5Name = (String) character5.getValue(); // Załóżmy, że masz TextField do wprowadzenia nazwy postaci 5*
+        String character5Name = (String) character5.getValue();
         Characters character5Char = findCharacterByName(em, character5Name);
         if (character5Char != null) {
             banner.setCharacter5(character5Char);
         } else {
             showAlert("Character 5* not found!");
         }
-        String character4_1Name = (String) character4_1.getValue(); // Załóżmy, że masz TextField do wprowadzenia nazwy postaci 5*
+        String character4_1Name = (String) character4_1.getValue();
         Characters character4_1Char = findCharacterByName(em, character4_1Name);
         if (character4_1Char != null) {
             banner.setCharacter4_1(character4_1Char);
         } else {
             showAlert("Character 4_1* not found!");
         }
-        String character4_2Name = (String) character4_2.getValue(); // Załóżmy, że masz TextField do wprowadzenia nazwy postaci 5*
+        String character4_2Name = (String) character4_2.getValue();
         Characters character4_2Char = findCharacterByName(em, character4_2Name);
         if (character4_2Char != null) {
             banner.setCharacter4_2(character4_2Char);
         } else {
             showAlert("Character 4_2* not found!");
         }
-        String character4_3Name = (String) character4_3.getValue(); // Załóżmy, że masz TextField do wprowadzenia nazwy postaci 5*
+        String character4_3Name = (String) character4_3.getValue();
         Characters character4_3Char = findCharacterByName(em, character4_3Name);
         if (character4_3Char != null) {
             banner.setCharacter4_3(character4_3Char);
@@ -287,7 +272,6 @@ public class AddingBannerController {
                     .setParameter("name", name)
                     .getSingleResult();
         } catch (Exception e) {
-            // Obsługa wyjątku, na przykład gdy postać nie istnieje
             return null;
         }
     }
