@@ -85,9 +85,6 @@ public class SearchingCharacterController {
                 }
                 name.getEditor().setText(newValue);
             });
-            name.setOnAction(event -> {
-                String selectedName = name.getSelectionModel().getSelectedItem();
-            });
 
             Query queryElement = em.createQuery("SELECT DISTINCT  c.element FROM Characters c");
             List<String> characterElement = queryElement.getResultList();
@@ -105,9 +102,6 @@ public class SearchingCharacterController {
                 }
                 element.getEditor().setText(newValue);
             });
-            element.setOnAction(event -> {
-                String selectedElement = element.getSelectionModel().getSelectedItem();
-            });
 
             Query queryRegion = em.createQuery("SELECT DISTINCT c.region FROM Characters c");
             List<String> characterRegion = queryRegion.getResultList();
@@ -124,10 +118,7 @@ public class SearchingCharacterController {
                     region.show();
                 }
                 region.getEditor().setText(newValue);
-            });
-            region.setOnAction(event -> {
-                String selectedRegion = region.getSelectionModel().getSelectedItem();
-            });
+            });;
 
             Query queryGender = em.createQuery("SELECT DISTINCT c.gender FROM Characters c");
             List<String> characterGender = queryGender.getResultList();
@@ -144,9 +135,6 @@ public class SearchingCharacterController {
                     gender.show();
                 }
                 gender.getEditor().setText(newValue);
-            });
-            gender.setOnAction(event -> {
-                String selectedGender = gender.getSelectionModel().getSelectedItem();
             });
 
             Query queryAge = em.createQuery("SELECT DISTINCT c.age FROM Characters c");
@@ -165,9 +153,6 @@ public class SearchingCharacterController {
                 }
                 age.getEditor().setText(newValue);
             });
-            age.setOnAction(event -> {
-                String selectedAge = age.getSelectionModel().getSelectedItem();
-            });
 
             Query queryWeapon = em.createQuery("SELECT DISTINCT c.weapon FROM Characters c");
             List<String> characterWeapon = queryWeapon.getResultList();
@@ -185,9 +170,6 @@ public class SearchingCharacterController {
                 }
                 weapon.getEditor().setText(newValue);
             });
-            weapon.setOnAction(event -> {
-                String selectedWeapon = weapon.getSelectionModel().getSelectedItem();
-            });
 
             Query queryQuality = em.createQuery("SELECT DISTINCT c.quality FROM Characters c");
             List<String> characterQuality = queryQuality.getResultList();
@@ -204,9 +186,6 @@ public class SearchingCharacterController {
                     quality.show();
                 }
                 quality.getEditor().setText(newValue);
-            });
-            quality.setOnAction(event -> {
-                String selectedWeapon = quality.getSelectionModel().getSelectedItem();
             });
         }finally{
             em.close();
