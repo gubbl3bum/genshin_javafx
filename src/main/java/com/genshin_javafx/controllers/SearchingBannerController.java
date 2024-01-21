@@ -173,7 +173,7 @@ public class SearchingBannerController {
             em.close();
         }
     }
-    private void setupDatePicker(){
+    public void setupDatePicker(){
         // Ustawienie minimalnej daty dla dateStart i dateBetween
         Callback<DatePicker, DateCell> dayCellFactory = dp -> new DateCell() {
             @Override

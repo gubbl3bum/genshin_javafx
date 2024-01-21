@@ -62,9 +62,8 @@ public class AddingBannerController {
 
     @FXML
     private void initialize() {
-//        addBanner();
         addListeners();
-        jfxcomboboxSetup();
+        jfxcomboboxInitialize();
         setupDatePicker();
         Adding_banner.setOnAction(e -> addBanner());
         Menu.setOnAction(e -> Main.switchScene("Menu.fxml"));
@@ -87,7 +86,7 @@ public class AddingBannerController {
             }
         };
     }
-    private void jfxcomboboxSetup(){
+    private void jfxcomboboxInitialize(){
         EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
         try{
             Query queryName = em.createQuery("SELECT DISTINCT  b.name FROM Banner b");
@@ -106,9 +105,6 @@ public class AddingBannerController {
                 }
                 name.getEditor().setText(newValue);
             });
-            name.setOnAction(event -> {
-                String selectedName = name.getSelectionModel().getSelectedItem();
-            });
 
             Query versionName = em.createQuery("SELECT DISTINCT  b.version FROM Banner b");
             List<String> versionList = versionName.getResultList();
@@ -126,9 +122,6 @@ public class AddingBannerController {
                 }
                 version.getEditor().setText(newValue);
             });
-            version.setOnAction(event -> {
-                String selectedVersion = version.getSelectionModel().getSelectedItem();
-            });
 
             Query queryChar5 = em.createQuery("SELECT DISTINCT char5.name FROM Banner b JOIN b.character5 char5");
             List<String> character5List = queryChar5.getResultList();
@@ -145,9 +138,6 @@ public class AddingBannerController {
                     character5.show();
                 }
                 character5.getEditor().setText(newValue);
-            });
-            character5.setOnAction(event -> {
-                String selectedChar5 = character5.getSelectionModel().getSelectedItem();
             });
 
             Query queryChar4_1 = em.createQuery("SELECT DISTINCT char4_1.name FROM Banner b JOIN b.character4_1 char4_1");
@@ -179,9 +169,6 @@ public class AddingBannerController {
                 }
                 character4_1.getEditor().setText(newValue);
             });
-            character4_1.setOnAction(event -> {
-                String selectetdchar4_1 = character4_1.getSelectionModel().getSelectedItem();
-            });
 
             character4_2.setItems(FXCollections.observableArrayList(combinedList));
             character4_2.setEditable(true);
@@ -197,9 +184,6 @@ public class AddingBannerController {
                 }
                 character4_2.getEditor().setText(newValue);
             });
-            character4_2.setOnAction(event -> {
-                String selectedchar4_2 = character4_2.getSelectionModel().getSelectedItem();
-            });
 
             character4_3.setItems(FXCollections.observableArrayList(combinedList));
             character4_3.setEditable(true);
@@ -214,9 +198,6 @@ public class AddingBannerController {
                     character4_3.show();
                 }
                 character4_3.getEditor().setText(newValue);
-            });
-            character4_3.setOnAction(event -> {
-                String selectedchar4_3 = character4_3.getSelectionModel().getSelectedItem();
             });
 
         } catch(Exception e){
