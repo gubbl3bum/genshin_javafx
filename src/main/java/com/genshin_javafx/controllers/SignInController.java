@@ -31,10 +31,13 @@ public class SignInController {
     @FXML
     private void login() {
         if (AuthManager.authenticate(login.getText(), password.getText())) {
-            Session.setCurrentUser("user");
+            if(login.getText().equals("admin")){
+                Session.setCurrentUser("admin");
+            }else{
+                Session.setCurrentUser("user");
+            }
             Main.switchScene("Menu.fxml");
         } else {
-
             showAlert("Sign in unsuccesful", "Incorrect login and/or password.");
         }
     }

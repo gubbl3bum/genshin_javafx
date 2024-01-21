@@ -47,6 +47,18 @@ public class SignUpController {
         EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
         em.getTransaction().begin();
         try {
+
+            UserInfo existingUser = em.createQuery("SELECT u FROM UserInfo u WHERE u.login = :login", UserInfo.class)
+                    .setParameter("login", login.getText())
+                    .getResultStream()
+                    .findFirst()
+                    .orElse(null);
+
+            if (existingUser != null) {
+                showAlert("User with this login already exists!");
+                return;
+            }
+
             UserInfo newUser = new UserInfo();
             newUser.setLogin(login.getText());
             newUser.setPassword(hashedPassword);

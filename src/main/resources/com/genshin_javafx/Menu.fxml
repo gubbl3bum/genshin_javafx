@@ -8,20 +8,22 @@
 
 <VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.genshin_javafx.controllers.MenuController">
     <AnchorPane prefHeight="711.0" prefWidth="900.0" style="-fx-background-color: RGB(32,36,66);">
-        <AnchorPane layoutX="76.0" layoutY="149.0" prefHeight="364.0" prefWidth="748.0" styleClass="anchor-custom" />
+        <AnchorPane layoutX="76.0" layoutY="149.0" prefHeight="364.0" prefWidth="748.0" styleClass="anchor-custom">
+            <Button fx:id="Add_banner_button" layoutX="479.0" layoutY="120.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Banner">
+            </Button>
+            <Button fx:id="Add_char_button" layoutX="66.0" layoutY="120.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Character">
+            </Button>
+            <Button fx:id="Delete_records" layoutX="479.0" layoutY="197.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Delete Records">
+            </Button>
+            <Button fx:id="Sign_out_button" layoutX="66.0" layoutY="272.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Sign Out">
+            </Button>
+            <Button fx:id="About_button" layoutX="483.0" layoutY="272.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="About" />
+        </AnchorPane>
         <Text fill="#d0d8f3" layoutX="386.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title-custom" text="Menu" wrappingWidth="128.689453125">
         </Text>
         <Button fx:id="Search_char_button" layoutX="141.0" layoutY="181.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Search Characters">
         </Button>
         <Button fx:id="Search_banners_button" layoutX="550.0" layoutY="181.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Search Banners">
-        </Button>
-        <Button fx:id="Sign_out_button" layoutX="155.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="Sign Out">
-        </Button>
-        <Button fx:id="Add_char_button" layoutX="141.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Character">
-        </Button>
-        <Button fx:id="Add_banner_button" layoutX="550.0" layoutY="279.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="210.0" styleClass="button-custom" text="Add Banner">
-        </Button>
-        <Button fx:id="About_button" layoutX="564.0" layoutY="424.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="182.0" styleClass="button-custom" text="About">
         </Button>
         <stylesheets>
             <URL value="@style.css" />
