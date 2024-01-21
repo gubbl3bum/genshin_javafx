@@ -3,7 +3,9 @@ package com.genshin_javafx.controllers;
 import com.genshin_javafx.Main;
 import com.genshin_javafx.entities.UserInfo;
 import com.genshin_javafx.utils.HibernateUtil;
+import com.genshin_javafx.utils.Session;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -37,7 +39,7 @@ public class SignUpController {
 
     private void register() {
         if (!password1.getText().equals(password2.getText())) {
-            // hasła muszą być równe
+            showAlert("Passwords do not match!");
             return;
         }
         String hashedPassword = BCrypt.hashpw(password1.getText(), BCrypt.gensalt());
@@ -48,18 +50,25 @@ public class SignUpController {
             UserInfo newUser = new UserInfo();
             newUser.setLogin(login.getText());
             newUser.setPassword(hashedPassword);
+            newUser.setRole("user");
 
             em.persist(newUser);
             em.getTransaction().commit();
-
-            //rejestracja udana, przejście do menu
+            Session.setCurrentUser("user");
             Main.switchScene("Menu.fxml");
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
-            // Obsługa błędu
         } finally {
             em.close();
         }
+    }
+
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 }

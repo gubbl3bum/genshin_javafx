@@ -2,6 +2,7 @@ package com.genshin_javafx.controllers;
 
 import com.genshin_javafx.entities.UserInfo;
 import com.genshin_javafx.utils.AuthManager;
+import com.genshin_javafx.utils.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -30,13 +31,11 @@ public class SignInController {
     @FXML
     private void login() {
         if (AuthManager.authenticate(login.getText(), password.getText())) {
-            // Logowanie zakończone sukcesem
-
-
+            Session.setCurrentUser("user");
             Main.switchScene("Menu.fxml");
         } else {
-            // Błąd logowania
-            showAlert("Logowanie nieudane", "Nieprawidłowy login lub hasło.");
+
+            showAlert("Sign in unsuccesful", "Incorrect login and/or password.");
         }
     }
 

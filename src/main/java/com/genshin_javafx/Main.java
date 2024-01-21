@@ -1,4 +1,5 @@
 package com.genshin_javafx;
+import com.genshin_javafx.utils.Session;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        Session.initialize();
         launch(args);
     }
 }

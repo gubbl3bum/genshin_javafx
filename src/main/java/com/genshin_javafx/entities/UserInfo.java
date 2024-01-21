@@ -13,6 +13,9 @@ public class UserInfo {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "role")
+    private String role;
+
     // Gettery
     public Integer getId() {
         return id;
@@ -23,6 +26,9 @@ public class UserInfo {
     public String getLogin() {
         return login;
     }
+    public String getRole(){
+        return role;
+    }
     // Settery
     public void setLogin(String login) {
         this.login = login;
@@ -32,5 +38,8 @@ public class UserInfo {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setRole(String role){
+        this.role = role;
     }
 }

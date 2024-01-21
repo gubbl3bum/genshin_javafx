@@ -20,6 +20,7 @@ public class StartController {
 
     @FXML
     private void initialize() {
+
         Sign_in_button.setOnAction(e -> Main.switchScene("SignIn.fxml"));
         Sign_up_button.setOnAction(e -> Main.switchScene("SignUp.fxml"));
         About_button.setOnAction(e -> Main.switchScene("AboutStart.fxml"));
