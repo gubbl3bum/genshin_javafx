@@ -92,9 +92,6 @@ public class SearchingBannerController {
                 }
                 name.getEditor().setText(newValue);
             });
-            name.setOnAction(event -> {
-                String selectedName = name.getSelectionModel().getSelectedItem();
-            });
 
             Query versionName = em.createQuery("SELECT DISTINCT  b.version FROM Banner b");
             List<String> versionList = versionName.getResultList();
@@ -112,9 +109,6 @@ public class SearchingBannerController {
                 }
                 version.getEditor().setText(newValue);
             });
-            version.setOnAction(event -> {
-                String selectedVersion = version.getSelectionModel().getSelectedItem();
-            });
 
             Query queryChar5 = em.createQuery("SELECT DISTINCT char5.name FROM Banner b JOIN b.character5 char5");
             List<String> character5List = queryChar5.getResultList();
@@ -131,9 +125,6 @@ public class SearchingBannerController {
                     character5.show();
                 }
                 character5.getEditor().setText(newValue);
-            });
-            character5.setOnAction(event -> {
-                String selecedChar5 = character5.getSelectionModel().getSelectedItem();
             });
 
             Query queryChar4_1 = em.createQuery("SELECT DISTINCT char4_1.name FROM Banner b JOIN b.character4_1 char4_1");
@@ -164,9 +155,7 @@ public class SearchingBannerController {
                 }
                 character4_1.getEditor().setText(newValue);
             });
-            character4_1.setOnAction(event -> {
-                String selectedchar4 = character4_1.getSelectionModel().getSelectedItem();
-            });
+
 
         }finally{
             em.close();
