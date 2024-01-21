@@ -6,6 +6,7 @@
 <?import javafx.scene.text.Text?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import java.net.URL?>
+
 <VBox maxHeight="619.0" maxWidth="-900.0" minHeight="619.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0"
       xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.genshin_javafx.controllers.SearchingCharacterController">
