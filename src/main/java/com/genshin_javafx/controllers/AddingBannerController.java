@@ -223,7 +223,12 @@ public class AddingBannerController {
 
         String valueString = version.getValue();
         if (valueString != null && valueString.matches("\\d+\\.\\d+")) {
-            banner.setVersion(valueString);
+            int numberOfBanners = getNumberOfBannersForVersion(em, valueString);
+            if(numberOfBanners < 4){
+                banner.setVersion(valueString);
+            } else {
+                showAlert("Can not add more than 4 banners for one version : " + valueString);
+            }
         } else {
             showAlert("Wrong version! Use 'X.Y' format where X and Y are numbers.");
         }
@@ -266,6 +271,11 @@ public class AddingBannerController {
         Main.switchScene("AddedBanner.fxml");
     }
 
+    private int getNumberOfBannersForVersion(EntityManager em, String version) {
+        Query query = em.createQuery("SELECT COUNT(b) FROM Banner b WHERE b.version = :version");
+        query.setParameter("version", version);
+        return (int) query.getSingleResult();
+    }
     private Characters findCharacterByName(EntityManager em, String name) {
         try {
             return em.createQuery("SELECT c FROM Characters c WHERE c.name = :name", Characters.class)
