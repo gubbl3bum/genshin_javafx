@@ -6,13 +6,9 @@ module com.genshin_javafx {
     requires org.hibernate.orm.core;
     requires jbcrypt;
     requires java.sql;
-    requires org.controlsfx.controls;
     requires com.jfoenix;
 
-
-    // Otwórz pakiet entities dla Hibernate
     opens com.genshin_javafx.entities to org.hibernate.orm.core, javafx.fxml, javafx.base;
-
     opens com.genshin_javafx to javafx.fxml;
     exports com.genshin_javafx;
     exports com.genshin_javafx.controllers;

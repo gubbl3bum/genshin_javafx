@@ -274,7 +274,8 @@ public class AddingBannerController {
     private int getNumberOfBannersForVersion(EntityManager em, String version) {
         Query query = em.createQuery("SELECT COUNT(b) FROM Banner b WHERE b.version = :version");
         query.setParameter("version", version);
-        return (int) query.getSingleResult();
+        Long count = (Long) query.getSingleResult();
+        return count.intValue();
     }
     private Characters findCharacterByName(EntityManager em, String name) {
         try {

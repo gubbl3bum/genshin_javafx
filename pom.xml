@@ -68,12 +68,6 @@
       <version>8.0.23</version>
     </dependency>
 
-    <!-- autouzupełnianie combobox -->
-    <dependency>
-      <groupId>org.controlsfx</groupId>
-      <artifactId>controlsfx</artifactId>
-      <version>11.2.0</version>
-    </dependency>
 
     <!-- JFoenix -->
     <dependency>
@@ -89,29 +83,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.12.1</version> <!-- Użyj odpowiedniej wersji -->
+        <version>3.12.1</version>
         <configuration>
-          <release>21</release> <!-- Ustaw na wersję Java, której używasz -->
+          <release>21</release>
           <compilerArgs>
             <arg>--add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED</arg>
           </compilerArgs>
         </configuration>
       </plugin>
-      <!-- autouzupełnianie -->
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.2</version> <!-- Zmień wersję na 3.1.2 -->
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Add-Opens>javafx.controls/javafx.scene.control.skin=org.controlsfx.controls</Add-Opens>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-
 
       <plugin>
         <groupId>org.openjfx</groupId>
