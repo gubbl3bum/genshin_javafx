@@ -18,6 +18,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(Main.class.getResource(fxmlFile));
             Scene scene = new Scene(root);
+            primaryStage.setTitle("Genshin Impact Database");
             primaryStage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
